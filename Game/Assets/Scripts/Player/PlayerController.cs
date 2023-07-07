@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
+	[SerializeField] private LayerMask m_WhatIsItem;
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
@@ -20,6 +21,9 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
+	const float k_ItemPickupRadius = .9f;
+	private bool m_CarryingItem = false;
+	private Transform m_Item = null;
 
 	[Header("Events")]
 	[Space]
@@ -64,10 +68,11 @@ public class PlayerController : MonoBehaviour
 
 	public void Update()
 	{
-		float move = Input.GetAxis("Horizontal");
+		float move = Input.GetAxis("Horizontal") * transform.right.x;
 		bool jump = Input.GetKey(KeyCode.Space);
 		//Debug.Log("" + move + ", " + jump + ", " + m_Grounded);
 		Move(move, false, jump);
+		PickupItem();
 	}
 
 
@@ -143,6 +148,38 @@ public class PlayerController : MonoBehaviour
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce * Math.Sign(m_Rigidbody2D.gravityScale)));
+		}
+	}
+
+	private void PickupItem()
+	{
+		if (Input.GetKeyDown(KeyCode.S))
+		{
+			Debug.Log(m_CarryingItem + " " + m_Item);
+			if (!m_CarryingItem)
+			{
+				Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, k_ItemPickupRadius, m_WhatIsItem);
+				Debug.Log(colliders.Length);
+				for (int i = 0; i < colliders.Length; i++)
+				{
+					if (colliders[i].gameObject != gameObject)
+					{
+						m_CarryingItem = true;
+						m_Item = colliders[i].gameObject.transform;
+						m_Item.SetParent(transform);
+						m_Item.localPosition = new Vector3(1f,0,0);
+						m_Item.GetComponent<Rigidbody2D>().simulated = false;
+
+					}
+				}
+			}
+			else
+			{
+				m_Item.SetParent(null);
+				m_Item.GetComponent<Rigidbody2D>().simulated = true;
+				m_Item = null;
+				m_CarryingItem = false;
+			}
 		}
 	}
 
