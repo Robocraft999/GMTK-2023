@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour
 	{
 		float move = Input.GetAxis("Horizontal") * transform.right.x;
 		bool jump = Input.GetKey(KeyCode.Space);
-		//Debug.Log("" + move + ", " + jump + ", " + m_Grounded);
 		Move(move, false, jump);
 		PickupItem();
 	}
@@ -155,11 +154,9 @@ public class PlayerController : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			Debug.Log(m_CarryingItem + " " + m_Item);
 			if (!m_CarryingItem)
 			{
 				Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, k_ItemPickupRadius, m_WhatIsItem);
-				Debug.Log(colliders.Length);
 				for (int i = 0; i < colliders.Length; i++)
 				{
 					if (colliders[i].gameObject != gameObject)
