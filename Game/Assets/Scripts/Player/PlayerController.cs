@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;							// Whether or not a player can steer while jumping;
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
-	[SerializeField] private LayerMask m_WhatIsItem;
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
@@ -23,6 +22,8 @@ public class PlayerController : MonoBehaviour
 	private Vector3 m_Velocity = Vector3.zero;
 	public Item ItemTriggered { get; set; }
 	private Transform m_Item = null;
+
+	private Animator m_Animator;
 
 	[Header("Events")]
 	[Space]
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
 	private void Awake()
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
+		m_Animator = GetComponent<Animator>();
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
@@ -62,6 +64,15 @@ public class PlayerController : MonoBehaviour
 				if (!wasGrounded)
 					OnLandEvent.Invoke();
 			}
+		}
+
+		if (m_Rigidbody2D.velocity.x > 0)
+		{
+			m_Animator.SetBool("IsWalking", true);
+		}
+		else
+		{
+			m_Animator.SetBool("IsWalking", false);
 		}
 	}
 
