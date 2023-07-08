@@ -21,8 +21,7 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
-	const float k_ItemPickupRadius = .9f;
-	private bool m_CarryingItem = false;
+	public Item ItemTriggered { get; set; }
 	private Transform m_Item = null;
 
 	[Header("Events")]
@@ -71,7 +70,8 @@ public class PlayerController : MonoBehaviour
 		float move = Input.GetAxis("Horizontal") * transform.right.x;
 		bool jump = Input.GetKey(KeyCode.Space);
 		Move(move, false, jump);
-		PickupItem();
+
+		CheckForItem();
 	}
 
 
@@ -150,36 +150,25 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private void PickupItem()
+	private void CheckForItem()
 	{
 		if (Input.GetKeyDown(KeyCode.S))
 		{
-			if (!m_CarryingItem)
+			if (!m_Item && ItemTriggered)
 			{
-				Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, k_ItemPickupRadius, m_WhatIsItem);
-				for (int i = 0; i < colliders.Length; i++)
-				{
-					if (colliders[i].gameObject != gameObject)
-					{
-						m_CarryingItem = true;
-						m_Item = colliders[i].gameObject.transform;
-						m_Item.SetParent(transform);
-						m_Item.localPosition = new Vector3(1f,0,0);
-						m_Item.GetComponent<Rigidbody2D>().simulated = false;
-
-					}
-				}
+				m_Item = ItemTriggered.gameObject.transform;
+				m_Item.SetParent(transform);
+				m_Item.localPosition = new Vector3(1f * Math.Sign(m_Rigidbody2D.gravityScale),0,0);
+				m_Item.GetComponent<Rigidbody2D>().simulated = false;
 			}
-			else
+			else if (m_Item)
 			{
 				m_Item.SetParent(null);
 				m_Item.GetComponent<Rigidbody2D>().simulated = true;
 				m_Item = null;
-				m_CarryingItem = false;
 			}
 		}
 	}
-
 
 	private void Flip()
 	{
