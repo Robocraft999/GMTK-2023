@@ -35,7 +35,7 @@ public class Item : MonoBehaviour
         else if (other.CompareTag("Plate"))
         {
             m_Animator.ResetTrigger("Activation");
-            other.GetComponent<Button>().SetPlateState(false);
+            other.GetComponent<Plate>().SetPlateState(false);
         }
     }
 
@@ -95,7 +95,7 @@ public class Item : MonoBehaviour
         if (other.CompareTag("Plate"))
         {
             m_Animator.SetTrigger("Activation");
-            other.GetComponent<Button>().SetPlateState(true);
+            other.GetComponent<Plate>().SetPlateState(true);
         }
     }
 }

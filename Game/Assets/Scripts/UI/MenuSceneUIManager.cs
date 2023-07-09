@@ -12,8 +12,6 @@ public class MenuSceneUIManager : MonoBehaviour
     public static MenuSceneUIManager Instance { get; private set; }
 
     public GameObject set_main;
-    public GameObject set_options;
-    public GameObject HTP;
 
     public void Awake()
     {
@@ -24,8 +22,6 @@ public class MenuSceneUIManager : MonoBehaviour
     {
         //TODO add options
         set_main.SetActive(true);
-        set_options.SetActive(false);
-        HTP.SetActive(false);
     }
 
     public void ButtonPressedStart()
@@ -43,33 +39,11 @@ public class MenuSceneUIManager : MonoBehaviour
     {
         //resets options
     }
-
-    public void ButtonPressedHTP()
-    {
-        if (HTP.active == true)
-        {
-            HTP.SetActive(false);
-        } else
-        {
-            HTP.SetActive(true);
-        }
-        
-    }
+    
 
     public void Update()
     {
-        if (set_options.active == true)
-        {
-            UpdateSliderText();
-        }
 
-    }
-
-    public void UpdateSliderText()
-    {
-        //example:
-        //rolls = GameObject.Find("sliderRolls").GetComponent<Slider>().value;
-        //GameObject.Find("rolls").GetComponent<TextMeshProUGUI>().text = rolls.ToString();
     }
 
 }
