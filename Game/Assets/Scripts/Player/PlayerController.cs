@@ -1,8 +1,6 @@
 using System;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
