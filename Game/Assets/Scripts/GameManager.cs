@@ -81,6 +81,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Level" + (m_level-1));
     }
 
+    public void QuitApplication()
+    {
+        Debug.Log("bye");
+        Application.Quit();
+    }
+
     public enum GameState
     {
         MENU, LEVEL

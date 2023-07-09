@@ -31,8 +31,7 @@ public class MenuSceneUIManager : MonoBehaviour
 
     public void ButtonPressedExit()
     {
-        Debug.Log("bye");
-        Application.Quit();
+        GameManager.Instance.QuitApplication();
     }
 
     public void ButtonPressedDefault()
