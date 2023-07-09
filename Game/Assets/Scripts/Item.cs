@@ -26,6 +26,7 @@ public class Item : MonoBehaviour
             var player = other.GetComponent<PlayerController>();
             if (player.ItemTriggered == this)
                 player.ItemTriggered = null;
+            m_Animator.ResetTrigger("Activation");
         }
     }
 
@@ -36,7 +37,8 @@ public class Item : MonoBehaviour
             var player = other.GetComponent<PlayerController>();
             if (!player.ItemTriggered)
                 player.ItemTriggered = this;
-            m_Animator.PlayInFixedTime("Activation");
+            m_Animator.SetTrigger("Activation");
+            //m_Animator.PlayInFixedTime("Activation");
         }
         if (other.CompareTag("Mirror"))
         {
