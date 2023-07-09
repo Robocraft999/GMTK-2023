@@ -5913,6 +5913,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5743421434718507616, guid: 7019c7ce3dca8b7418e80f897cd7b8ab, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5743421434718507618, guid: 7019c7ce3dca8b7418e80f897cd7b8ab, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -6017,6 +6021,34 @@ PrefabInstance:
     - target: {fileID: 2636737151531159964, guid: d2ed9f3039c320c49b91045594cf09a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636737151531159966, guid: d2ed9f3039c320c49b91045594cf09a3, type: 3}
+      propertyPath: onStateChangeEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636737151531159966, guid: d2ed9f3039c320c49b91045594cf09a3, type: 3}
+      propertyPath: onStateChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636737151531159966, guid: d2ed9f3039c320c49b91045594cf09a3, type: 3}
+      propertyPath: onStateChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 882762347}
+    - target: {fileID: 2636737151531159966, guid: d2ed9f3039c320c49b91045594cf09a3, type: 3}
+      propertyPath: onStateChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636737151531159966, guid: d2ed9f3039c320c49b91045594cf09a3, type: 3}
+      propertyPath: onStateChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangePlateAmount
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636737151531159966, guid: d2ed9f3039c320c49b91045594cf09a3, type: 3}
+      propertyPath: onStateChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Portal, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2636737151531159966, guid: d2ed9f3039c320c49b91045594cf09a3, type: 3}
+      propertyPath: onStateChangeEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2636737151531159967, guid: d2ed9f3039c320c49b91045594cf09a3, type: 3}
       propertyPath: m_Name

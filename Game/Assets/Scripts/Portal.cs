@@ -20,9 +20,8 @@ public class Portal : MonoBehaviour
         m_Animator.SetBool("Activated", m_PlateAmount == totalPlateAmount);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("t");
         if (other.CompareTag("Player"))
         {
             if (m_Animator.GetBool("Activated"))
