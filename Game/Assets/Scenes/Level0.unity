@@ -2152,8 +2152,8 @@ Tilemap:
   - first: {x: 17, y: 2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 10
-      m_TileSpriteIndex: 10
+      m_TileIndex: 28
+      m_TileSpriteIndex: 30
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2252,8 +2252,8 @@ Tilemap:
   - first: {x: 17, y: 3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 10
-      m_TileSpriteIndex: 10
+      m_TileIndex: 28
+      m_TileSpriteIndex: 30
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2991,7 +2991,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: a5a34f14f8b46d74d974d97a14546d9f, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 48
+  - m_RefCount: 46
     m_Data: {fileID: 11400000, guid: 36c398965bc6ab74e92a8fc68d4c17e8, type: 2}
   - m_RefCount: 10
     m_Data: {fileID: 11400000, guid: ff6c857f4f237d4498c384dc9174f863, type: 2}
@@ -3027,7 +3027,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 397de346be498704e937143c5836bc38, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 5813c88cea29fcf4096102ebd14695bb, type: 2}
-  - m_RefCount: 11
+  - m_RefCount: 13
     m_Data: {fileID: 11400000, guid: 394924cb981be5544a6cd193b34ef7a7, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -3066,7 +3066,7 @@ Tilemap:
     m_Data: {fileID: -8130562059248596498, guid: 2718c7512cfd6d94c80910d1e29093dc, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 48
+  - m_RefCount: 46
     m_Data: {fileID: 141052533345497575, guid: 2718c7512cfd6d94c80910d1e29093dc, type: 3}
   - m_RefCount: 10
     m_Data: {fileID: 7098188229760260130, guid: 2718c7512cfd6d94c80910d1e29093dc, type: 3}
@@ -3106,7 +3106,7 @@ Tilemap:
     m_Data: {fileID: -8468950622050850440, guid: 2718c7512cfd6d94c80910d1e29093dc, type: 3}
   - m_RefCount: 29
     m_Data: {fileID: 3628941234961328129, guid: 2718c7512cfd6d94c80910d1e29093dc, type: 3}
-  - m_RefCount: 11
+  - m_RefCount: 13
     m_Data: {fileID: 7672935364565683476, guid: 8855b127ed6866f43a11b9540db7da1c, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -5910,10 +5910,10 @@ RectTransform:
   m_Father: {fileID: 2101081929}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290, y: 243}
-  m_SizeDelta: {x: 520, y: 100}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 357, y: -174}
+  m_SizeDelta: {x: 600, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1627515650
 MonoBehaviour:
@@ -5937,15 +5937,15 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4d299d6e1c3012b4eabe19b2ef07fbff, type: 3}
-    m_FontSize: 24
+    m_FontSize: 35
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 300
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Welcome to [game name here]!
