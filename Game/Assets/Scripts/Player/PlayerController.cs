@@ -130,6 +130,7 @@ public class PlayerController : MonoBehaviour
 				m_Item = ItemTriggered.gameObject.transform;
 				m_Item.SetParent(transform);
 				m_Item.localPosition = new Vector3(0.4f,0,0);
+				m_Item.localRotation = Quaternion.identity;
 				m_Item.GetComponent<Rigidbody2D>().simulated = false;
 			}
 			else if (m_Item)

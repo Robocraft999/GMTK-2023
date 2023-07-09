@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.LEVEL:
                 SceneManager.LoadScene("Level" + m_level);
+                m_level += 1;
                 break;
         }
         State = newState;
