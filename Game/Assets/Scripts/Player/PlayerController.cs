@@ -85,16 +85,16 @@ public class PlayerController : MonoBehaviour
 		{
 			// Move the character by finding the target velocity
 			Vector3 targetVelocity;
-			if (!m_Grounded)
+			//if (!m_Grounded)
 				if (inWall)
 				{
 					targetVelocity = new Vector2(0, m_Rigidbody2D.velocity.y);
 				}
-				else
+				/*else
 				{
 					targetVelocity = new Vector2(move * 5f, m_Rigidbody2D.velocity.y);
-				}
-			else
+				}*/
+			//else
 				targetVelocity = new Vector2(move * 8f, m_Rigidbody2D.velocity.y);
 			// And then smoothing it out and applying it to the character
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
 			{
 				m_Item = ItemTriggered.gameObject.transform;
 				m_Item.SetParent(transform);
-				m_Item.localPosition = new Vector3(0.4f * Math.Sign(m_Rigidbody2D.gravityScale),0,0);
+				m_Item.localPosition = new Vector3(0.4f,0,0);
 				m_Item.GetComponent<Rigidbody2D>().simulated = false;
 			}
 			else if (m_Item)
