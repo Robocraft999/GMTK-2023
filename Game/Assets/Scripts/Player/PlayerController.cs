@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private LayerMask m_WhatIsGround;							// A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_WallCheck;							    // A position marking where to check for ceilings
-	[SerializeField] private AudioClip jumpSound;
+	[SerializeField] private AudioClip pickupItem;
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
@@ -121,7 +121,6 @@ public class PlayerController : MonoBehaviour
 			// Add a vertical force to the player.
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce * Math.Sign(m_Rigidbody2D.gravityScale)));
-			m_AudioSource.PlayOneShot(jumpSound);
 		}
 	}
 
@@ -136,6 +135,7 @@ public class PlayerController : MonoBehaviour
 				m_Item.localPosition = new Vector3(0.4f,0,0);
 				m_Item.localRotation = Quaternion.identity;
 				m_Item.GetComponent<Rigidbody2D>().simulated = false;
+				m_AudioSource.PlayOneShot(pickupItem);
 			}
 			else if (m_Item)
 			{

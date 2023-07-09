@@ -3,14 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Item : MonoBehaviour
 {
 
     private Animator m_Animator;
+    private AudioSource m_AudioSource;
+    public AudioClip lightToDark;
+    public AudioClip darkToLight;
     void Start()
     {
         m_Animator = GetComponent<Animator>();
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -80,6 +85,7 @@ public class Item : MonoBehaviour
             //Debug.DrawRay(mirror.transform.position, new Vector3(previousVelocity.x, previousVelocity.y), Color.black, 100);
             //Debug.DrawRay(mirror.Other.transform.position, outVector, Color.white, 100);
             //Debug.Log("t");
+            m_AudioSource.PlayOneShot(rigidbody.gravityScale > 0? lightToDark : darkToLight);
             transform.SetPositionAndRotation(mirror.Other.transform.position + outVector, transform.rotation);
             rigidbody.gravityScale *= -1;
             rigidbody.velocity = Quaternion.Euler(0, 0, target) * rigidbody.velocity;
