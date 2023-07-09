@@ -5950,13 +5950,13 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Welcome to [game name here]!
 
-    Steer your characters using W, A, D.
+    Steer your characters using SPACE, A,
+    D.
 
-    Use
-    S to pick up or drop boxes.
+    Use S to pick up or drop boxes.
 
-    Activate all pressure plates to enter the next
-    level.'
+    Activate all pressure plates to
+    enter the next level.'
 --- !u!222 &1627515651
 CanvasRenderer:
   m_ObjectHideFlags: 0
