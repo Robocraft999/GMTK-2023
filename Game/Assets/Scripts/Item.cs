@@ -73,7 +73,7 @@ public class Item : MonoBehaviour
             Debug.DrawRay(mirror.Other.transform.position, Quaternion.Euler(0,0,diff) * new Vector3(previousVelocity.x, previousVelocity.y), Color.yellow, 100);
             
             //sin alpha * h = d
-            var outVector = Quaternion.Euler(0,0,diff) * new Vector3(previousVelocity.x, previousVelocity.y).normalized * (float)(1.5 / Math.Sin(alpha));
+            var outVector = Quaternion.Euler(0,0,diff) * new Vector3(previousVelocity.x, previousVelocity.y).normalized * (float)(1 / Math.Sin(Mathf.Deg2Rad * alpha));
             Debug.DrawRay(mirror.transform.position, new Vector3(previousVelocity.x, previousVelocity.y), Color.black, 100);
             Debug.DrawRay(mirror.Other.transform.position, outVector, Color.white, 100);
             Debug.Log("t");
