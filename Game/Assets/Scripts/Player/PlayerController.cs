@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 	{
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 		m_Animator = GetComponent<Animator>();
+		m_FacingRight = Math.Sign(m_Rigidbody2D.gravityScale) > 0;
 
 		if (OnLandEvent == null)
 			OnLandEvent = new UnityEvent();
@@ -63,15 +64,9 @@ public class PlayerController : MonoBehaviour
 		bool jump = Input.GetKey(KeyCode.Space);
 		Move(move, jump);
 		
-		if (Math.Abs(m_Rigidbody2D.velocity.x) > 0.8f)
-		{
-			m_Animator.SetBool("IsWalking", true);
-		}
-		else
-		{
-			m_Animator.SetBool("IsWalking", false);
-		}
-		m_Animator.SetBool("IsJumping", !m_Grounded);
+		m_Animator.SetBool("IsWalking", Math.Abs(m_Rigidbody2D.velocity.x) > 0.8f);
+		m_Animator.SetBool("IsJumping", !m_Grounded && m_Rigidbody2D.velocity.y > 0);
+		m_Animator.SetBool("IsFalling", !m_Grounded && m_Rigidbody2D.velocity.y < 0);
 
 		CheckForItem();
 	}
