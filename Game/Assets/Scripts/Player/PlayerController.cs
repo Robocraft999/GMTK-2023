@@ -80,23 +80,24 @@ public class PlayerController : MonoBehaviour
 		{
 			inWall = true;
 		}
+		
+		Debug.Log(inWall + " " + m_Grounded);
 
 		//only control the player if grounded or airControl is turned on
 		if (m_Grounded || m_AirControl)
 		{
 			// Move the character by finding the target velocity
 			Vector3 targetVelocity;
-			//if (!m_Grounded)
-				if (inWall)
-				{
-					targetVelocity = new Vector2(0, m_Rigidbody2D.velocity.y);
-				}
-				/*else
-				{
-					targetVelocity = new Vector2(move * 5f, m_Rigidbody2D.velocity.y);
-				}*/
-			//else
+			if (inWall && !m_Grounded)
+			{
+				targetVelocity = new Vector2(0, m_Rigidbody2D.velocity.y);
+			}
+			else
+			{
 				targetVelocity = new Vector2(move * 8f, m_Rigidbody2D.velocity.y);
+			}
+
+			Debug.Log(targetVelocity);
 			// And then smoothing it out and applying it to the character
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
