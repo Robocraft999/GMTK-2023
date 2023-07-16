@@ -80,8 +80,6 @@ public class PlayerController : MonoBehaviour
 		{
 			inWall = true;
 		}
-		
-		Debug.Log(inWall + " " + m_Grounded);
 
 		//only control the player if grounded or airControl is turned on
 		if (m_Grounded || m_AirControl)
@@ -96,8 +94,7 @@ public class PlayerController : MonoBehaviour
 			{
 				targetVelocity = new Vector2(move * 8f, m_Rigidbody2D.velocity.y);
 			}
-
-			Debug.Log(targetVelocity);
+			
 			// And then smoothing it out and applying it to the character
 			m_Rigidbody2D.velocity = Vector3.SmoothDamp(m_Rigidbody2D.velocity, targetVelocity, ref m_Velocity, m_MovementSmoothing);
 
@@ -139,7 +136,9 @@ public class PlayerController : MonoBehaviour
 			else if (m_Item)
 			{
 				m_Item.SetParent(null);
-				m_Item.GetComponent<Rigidbody2D>().simulated = true;
+				var itemRigidbody = m_Item.GetComponent<Rigidbody2D>();
+				itemRigidbody.velocity = m_Rigidbody2D.velocity;
+				itemRigidbody.simulated = true;
 				m_Item = null;
 			}
 		}

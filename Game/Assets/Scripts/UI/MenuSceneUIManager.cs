@@ -12,6 +12,9 @@ public class MenuSceneUIManager : MonoBehaviour
     public static MenuSceneUIManager Instance { get; private set; }
 
     public GameObject set_main;
+    public GameObject set_options;
+
+    public bool UseSafePortals { get; set; }
 
     public void Awake()
     {
@@ -20,8 +23,9 @@ public class MenuSceneUIManager : MonoBehaviour
 
     public void Start()
     {
-        //TODO add options
         set_main.SetActive(true);
+        set_options.SetActive(false);
+        UseSafePortals = true;
     }
 
     public void ButtonPressedStart()
@@ -36,13 +40,17 @@ public class MenuSceneUIManager : MonoBehaviour
 
     public void ButtonPressedDefault()
     {
-        //resets options
+        UseSafePortals = true;
+        GameObject.Find("safePortals").GetComponent<Toggle>().isOn = true;
     }
     
 
     public void Update()
     {
-
+        if (set_options.activeSelf)
+        {
+            
+        }
     }
 
 }
