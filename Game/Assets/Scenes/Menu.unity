@@ -180,8 +180,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Main programming by \t\t\t@Robocraft999\nUI, Design and Quality Of Life
-    by\t@Ein_Koala and @Braunstein\nMade for GMTK Game Jam 2023"
+  m_text: "Main programming by \t\t\t\t\t\t@Robocraft999\nSounds, Sprites, Assistant
+    Level Design by \t\t@Ein_Koala\nUI, Concepts. Lead Level Design by\t\t\t@Braunstein\nMade
+    for GMTK Game Jam 2023"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
