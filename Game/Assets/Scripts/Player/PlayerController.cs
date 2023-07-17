@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
+	private bool m_InWall;
 	const float k_WallRadius = .2f;     // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
@@ -57,6 +58,21 @@ public class PlayerController : MonoBehaviour
 					OnLandEvent.Invoke();
 			}
 		}
+
+		m_InWall = false;
+		/*if (Physics2D.OverlapCircle(m_WallCheck.position, k_WallRadius, m_WhatIsGround))
+		{
+			m_InWall = true;
+		}*/
+
+		Debug.Log("t");
+		foreach (var col in Physics2D.OverlapCapsuleAll(m_WallCheck.position, new Vector2(0.05f,1.8f), CapsuleDirection2D.Vertical, 0, m_WhatIsGround))
+		{
+			Debug.Log(col);
+			if (col)
+				m_InWall = true;
+		}
+
 	}
 
 	public void Update()
@@ -75,18 +91,12 @@ public class PlayerController : MonoBehaviour
 
 	public void Move(float move, bool jump)
 	{
-		bool inWall = false;
-		if (Physics2D.OverlapCircle(m_WallCheck.position, k_WallRadius, m_WhatIsGround))
-		{
-			inWall = true;
-		}
-
 		//only control the player if grounded or airControl is turned on
 		if (m_Grounded || m_AirControl)
 		{
 			// Move the character by finding the target velocity
 			Vector3 targetVelocity;
-			if (inWall && !m_Grounded)
+			if (m_InWall && !m_Grounded)
 			{
 				targetVelocity = new Vector2(0, m_Rigidbody2D.velocity.y);
 			}

@@ -165,7 +165,6 @@ MonoBehaviour:
     m_Bits: 64
   m_GroundCheck: {fileID: 3477370230680721734}
   m_WallCheck: {fileID: 2768665751003897718}
-  jumpSound: {fileID: 8300000, guid: bc3c13cea9b37b74e82165a41910b552, type: 3}
   pickupItem: {fileID: 8300000, guid: 63273e117a9820d46b53a5e27150ea3a, type: 3}
   OnLandEvent:
     m_PersistentCalls:
@@ -320,7 +319,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8576851226220604320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.55, y: 0, z: 0}
+  m_LocalPosition: {x: 0.46, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2448424527488283547}
